@@ -22,19 +22,47 @@ public class Criar_sala_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_criar_sala_);
-        Button btnNomeJogador = (Button)findViewById(R.id.button_criar_sala);
-        TextView textViewNomeJogador = (TextView)findViewById(R.id.textView_nome_jogador);
-        EditText editTextNomeJogador = (EditText) findViewById(R.id.editText_nome_jogador);
+        final Button btnNomeJogador = (Button)findViewById(R.id.button_cadastrar_sala);//proximo
+        final TextView textViewNomeJogador = (TextView)findViewById(R.id.textView_nome_jogador);
+        final EditText editTextNomeJogador = (EditText) findViewById(R.id.editText_nome_jogador);
+
+        final Button btnNomeSala=(Button)findViewById(R.id.button_cadastrar_jogador_em_sala);//enviar
+        final TextView textViewNomeSala = (TextView) findViewById(R.id.textView_nome_sala);
+        final EditText editTextNomeSala = (EditText) findViewById(R.id.editText_nome_sala);
 
         textViewNomeJogador.setVisibility(View.INVISIBLE);
         editTextNomeJogador.setVisibility(View.INVISIBLE);
+        btnNomeSala.setVisibility(View.INVISIBLE);
+
+        btnNomeJogador.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                btnNomeSala.setVisibility(View.VISIBLE);
+                textViewNomeJogador.setVisibility(View.VISIBLE);
+                editTextNomeJogador.setVisibility(View.VISIBLE);
+
+                textViewNomeSala.setVisibility(View.INVISIBLE);
+                editTextNomeSala.setVisibility(View.INVISIBLE);
+                btnNomeJogador.setVisibility(View.INVISIBLE);
+                RegistrarSala();
+            }
+        });
+
+        btnNomeSala.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                RegistraJogadorSala();
+            }
+
+        });
+
 
     }
 
     public void RegistrarSala(){
         new Thread(){
             public void run(){
-                EditText edtTxtNomeTime = (EditText)findViewById(R.id.editText_nome_jogador);
+                EditText edtTxtNomeTime = (EditText)findViewById(R.id.editText_nome_sala);
                 try {
                     postHttp(edtTxtNomeTime.getText().toString());
                 } catch (IOException e) {
@@ -49,7 +77,7 @@ public class Criar_sala_Activity extends AppCompatActivity {
             entrada = entrada.replaceAll(" ", "_");
         }
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://192.168.1.122/gameBoard/CriarSala.php?nome=" + entrada);
+        HttpPost httpPost = new HttpPost("http://192.168.1.122/BoardQuestion/Consultas/criarSala.php?nome=" + entrada);
 
         final HttpResponse resposta = httpClient.execute(httpPost);
         //mensagem = EntityUtils.toString(resposta.getEntity());
@@ -65,4 +93,44 @@ public class Criar_sala_Activity extends AppCompatActivity {
         });
     }
 
+    public void RegistraJogadorSala(){
+        new Thread(){
+            public void run(){
+                EditText edtTxtNomeSala = (EditText)findViewById(R.id.editText_nome_sala);
+                EditText edtTxtNomeJogador = (EditText)findViewById(R.id.editText_nome_jogador);
+                try {
+                    postHttpJogador(edtTxtNomeSala.getText().toString(), edtTxtNomeJogador.getText().toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+    public void postHttpJogador(String nome, String jogador) throws IOException {
+        String entrada = nome;
+        String entradaJogador = jogador;
+
+        if (nome.contains(" ")) {
+            entrada = entrada.replaceAll(" ", "_");
+        }
+        if (jogador.contains(" ")) {
+            entradaJogador = entradaJogador.replaceAll(" ", "_");
+        }
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost("http://192.168.1.122/BoardQuestion/Consultas/entrarSala.php?nome=" + entradaJogador+"&sala="+entrada);
+
+        final HttpResponse resposta = httpClient.execute(httpPost);
+        //mensagem = EntityUtils.toString(resposta.getEntity());
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+                try {
+                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

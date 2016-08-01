@@ -13,7 +13,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
-public class Entrar_em_sala_Activity extends AppCompatActivity {
+public class  Entrar_em_sala_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
