@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "449778046691",
+    "firebase_url": "https://gameboardquestion.firebaseio.com",
+    "project_id": "gameboardquestion",
+    "storage_bucket": "gameboardquestion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449778046691:android:43999ae25f138863",
+        "android_client_info": {
+          "package_name": "com.example.marcos.gameboardquestion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449778046691-qaa4rrsrki7scjet7cvki6isnkdpfopd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.marcos.gameboardquestion",
+            "certificate_hash": "43F1062EBE6EF4D50421EA9A1D7AF9345CA7277E"
+          }
+        },
+        {
+          "client_id": "449778046691-4dp6aimel9jf7vqgspl6us1ggegen4vf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC33pr7StdFIDSijgLitpMs-pNAIMF3_10"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449778046691-4dp6aimel9jf7vqgspl6us1ggegen4vf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
