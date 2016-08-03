@@ -13,11 +13,11 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-
+import com.example.marcos.gameboardquestion.IPserver.*;
 import java.io.IOException;
 
 public class Criar_sala_Activity extends AppCompatActivity {
-
+    IPserver server = new IPserver();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +77,7 @@ public class Criar_sala_Activity extends AppCompatActivity {
             entrada = entrada.replaceAll(" ", "_");
         }
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://192.168.1.122/BoardQuestion/Consultas/criarSala.php?nome=" + entrada);
+        HttpPost httpPost = new HttpPost(server.caminhoPHP+"criarSala.php?nome=" + entrada);
 
         final HttpResponse resposta = httpClient.execute(httpPost);
         //mensagem = EntityUtils.toString(resposta.getEntity());
@@ -118,7 +118,7 @@ public class Criar_sala_Activity extends AppCompatActivity {
         }
 
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost("http://192.168.1.122/BoardQuestion/Consultas/entrarSala.php?nome=" + entradaJogador+"&sala="+entrada);
+        HttpPost httpPost = new HttpPost(server.caminhoPHP+"entrarSala.php?nome=" + entradaJogador+"&sala="+entrada);
 
         final HttpResponse resposta = httpClient.execute(httpPost);
         //mensagem = EntityUtils.toString(resposta.getEntity());

@@ -12,23 +12,99 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.apache.http.*;
 
 import java.io.IOException;
 
-public class  Entrar_em_sala_Activity extends AppCompatActivity {
+import static android.R.layout.simple_list_item_1;
 
+public class  Entrar_em_sala_Activity extends AppCompatActivity {
+    IPserver server = new IPserver();
+    String[] salas = new String[]{"Carragando Salas...", "TesteSala"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrar_em_sala_);
 
-        final String[] salas = new String[10];
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, salas);
         final ListView listView_salas = (ListView)findViewById(R.id.listView_lista_de_salas);
+        listView_salas.setAdapter(adapter);
+        ListaSala();
 
-
+    }
+    public void ListaSala(){
+        final ArrayAdapter<String> adapter;
+        final ListView listView_salas = (ListView)findViewById(R.id.listView_lista_de_salas);
+        new Thread(){
+            public void run(){
+                try {
+                    postHttpListaSala();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+        adapter = new ArrayAdapter<String>(this, simple_list_item_1, salas);
+        listView_salas.setAdapter(adapter);
+    }
+    public void postHttpListaSala() throws IOException {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(server.caminhoPHP+"listarSalas.php");
+        final HttpResponse resposta = httpClient.execute(httpPost);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                try {
+                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
+                    //String stringSalas = EntityUtils.toString(resposta.getEntity());
+                    //salas = stringSalas.split(";");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
     }
 
+
+    public void RegistraJogadorSala(){
+        new Thread(){
+            public void run(){
+                EditText edtTxtNomeSala = (EditText)findViewById(R.id.editText_nome_sala);
+                EditText edtTxtNomeJogador = (EditText)findViewById(R.id.editText_nome_jogador);
+                try {
+                    postHttpJogador(edtTxtNomeSala.getText().toString(), edtTxtNomeJogador.getText().toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+    public void postHttpJogador(String nome, String jogador) throws IOException {
+        String entrada = nome;
+        String entradaJogador = jogador;
+
+        if (nome.contains(" ")) {
+            entrada = entrada.replaceAll(" ", "_");
+        }
+        if (jogador.contains(" ")) {
+            entradaJogador = entradaJogador.replaceAll(" ", "_");
+        }
+
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(server.caminhoPHP+"entrarSala.php?nome=" + entradaJogador+"&sala="+entrada);
+
+        final HttpResponse resposta = httpClient.execute(httpPost);
+        //mensagem = EntityUtils.toString(resposta.getEntity());
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+                try {
+                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
 }
