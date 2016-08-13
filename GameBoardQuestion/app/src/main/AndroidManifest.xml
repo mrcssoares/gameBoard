@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AguardandoConexaoActivity"></activity>
+        <activity android:name=".AguardandoConexaoActivity" />
+        <activity android:name=".ResponderPerguntaActivity"></activity>
     </application>
 
 </manifest>
