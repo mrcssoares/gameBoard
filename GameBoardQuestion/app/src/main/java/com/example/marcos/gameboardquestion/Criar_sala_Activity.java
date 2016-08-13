@@ -1,5 +1,6 @@
 package com.example.marcos.gameboardquestion;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -52,10 +53,17 @@ public class Criar_sala_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 RegistraJogadorSala();
+                mostrarAguardandoConexao();
             }
 
         });
 
+
+    }
+
+    public void mostrarAguardandoConexao() {
+        Intent intent = new Intent(this, AguardandoConexaoActivity.class);
+        startActivity(intent);
 
     }
 
@@ -126,7 +134,7 @@ public class Criar_sala_Activity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             public void run() {
                 try {
-                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_LONG).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -20,7 +20,7 @@ import static android.R.layout.simple_list_item_1;
 
 public class  Entrar_em_sala_Activity extends AppCompatActivity {
     IPserver server = new IPserver();
-    String[] salas = new String[]{"Carragando Salas...", "TesteSala"};
+    String[] salas = new String[]{"Sala 1", "Sala 2", "Sala X"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +99,7 @@ public class  Entrar_em_sala_Activity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             public void run() {
                 try {
-                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_LONG).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

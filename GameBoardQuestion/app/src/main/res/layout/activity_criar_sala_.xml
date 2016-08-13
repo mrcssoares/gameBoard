@@ -33,8 +33,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText_nome_jogador"
         android:layout_below="@+id/textView_nome_jogador"
-        android:layout_centerHorizontal="true"
-        android:text="ex: arlindo" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,7 +48,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText_nome_sala"
-        android:text="Ex: sola mentos"
         android:layout_below="@+id/textView_nome_sala"
         android:layout_centerHorizontal="true" />
 
