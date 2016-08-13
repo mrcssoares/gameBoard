@@ -29,7 +29,7 @@
   if ($count == 0){
       $insercao = $DBH->prepare("INSERT INTO JOGADOR (ID, Nome,Fase, IdSala) VALUES ('$ID', '$nome', '0', '$nt')") or die ("Error: " .$insercao->erroInfo());
       $insercao->execute();
-      echo"Jogador entrou na Sala: ".$sala;//true
+      echo"Jogador: ".$nome." Entrou na Sala: ".$sala;//true
   }else
       echo "Jogador ja existe."//false
 ?>
