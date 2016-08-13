@@ -20,12 +20,13 @@ import static android.R.layout.simple_list_item_1;
 
 public class  Entrar_em_sala_Activity extends AppCompatActivity {
     IPserver server = new IPserver();
-    String[] salas = new String[]{"Sala 1", "Sala 2", "Sala X"};
+    String[] salas = new String[100];
+    String stringSalas = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrar_em_sala_);
-
+        salas = new String[]{"sala 1", "sala 2", "sala 3"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, salas);
         final ListView listView_salas = (ListView)findViewById(R.id.listView_lista_de_salas);
         listView_salas.setAdapter(adapter);
@@ -55,15 +56,22 @@ public class  Entrar_em_sala_Activity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             public void run() {
                 try {
-                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
-                    //String stringSalas = EntityUtils.toString(resposta.getEntity());
-                    //salas = stringSalas.split(";");
+                    //Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
+                    stringSalas = EntityUtils.toString(resposta.getEntity());
+                    salas = stringSalas.split(";");
+                    listSalas(salas);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
 
+    }
+
+    public void listSalas(String[] salas){
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, salas);
+        final ListView listView_salas = (ListView)findViewById(R.id.listView_lista_de_salas);
+        listView_salas.setAdapter(adapter);
     }
 
 
