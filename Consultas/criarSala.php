@@ -20,10 +20,12 @@
 
   $sql = $resultado->fetch(PDO::FETCH_OBJ);
   $count = $resultado->rowCount();
-  echo $count;
 
   if($count == 0){
       $resultado = $DBH->prepare("INSERT INTO SALA (ID, Nome) VALUES (NULL, '$nome')");
       $resultado->execute();
+      echo "Sala criada com sucesso!";
+  }else{
+    echo "Sala já existe!";
   }
 ?>

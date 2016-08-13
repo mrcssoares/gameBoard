@@ -32,6 +32,7 @@ public class  Entrar_em_sala_Activity extends AppCompatActivity {
         listView_salas.setAdapter(adapter);
         ListaSala();
 
+
     }
     //teste git
     public void ListaSala(){
