@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AguardandoConexaoActivity" />
-        <activity android:name=".ResponderPerguntaActivity"></activity>
+        <activity android:name=".ResponderPerguntaActivity" />
+        <activity android:name=".Entrar_Em_Sala2Activity"></activity>
     </application>
 
 </manifest>

@@ -1,7 +1,10 @@
 package com.example.marcos.gameboardquestion;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,10 +34,35 @@ public class  Entrar_em_sala_Activity extends AppCompatActivity {
         final ListView listView_salas = (ListView)findViewById(R.id.listView_lista_de_salas);
         listView_salas.setAdapter(adapter);
         ListaSala();
+        listView_salas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                // ListView Clicked item index
+                int itemPosition     = position;
+
+                // ListView Clicked item value
+                String  itemValue    = (String) listView_salas.getItemAtPosition(position);
+                mostrarEntrarEmSala2(itemValue);
+                // Show Alert
+                //Toast.makeText(getApplicationContext(),
+                  //      "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_SHORT)
+                    //    .show();
+
+            }
 
 
+        });
     }
-    //teste git
+
+    public void mostrarEntrarEmSala2(String nomesala){
+        Intent intent = new Intent(this, Entrar_Em_Sala2Activity.class);
+        intent.putExtra("nomeSala", nomesala);
+        startActivity(intent);
+    }
+
     public void ListaSala(){
         final ArrayAdapter<String> adapter;
         final ListView listView_salas = (ListView)findViewById(R.id.listView_lista_de_salas);
@@ -73,48 +101,6 @@ public class  Entrar_em_sala_Activity extends AppCompatActivity {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, salas);
         final ListView listView_salas = (ListView)findViewById(R.id.listView_lista_de_salas);
         listView_salas.setAdapter(adapter);
-    }
-
-
-    public void RegistraJogadorSala(){
-        new Thread(){
-            public void run(){
-                EditText edtTxtNomeSala = (EditText)findViewById(R.id.editText_nome_sala);
-                EditText edtTxtNomeJogador = (EditText)findViewById(R.id.editText_nome_jogador);
-                try {
-                    postHttpJogador(edtTxtNomeSala.getText().toString(), edtTxtNomeJogador.getText().toString());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }.start();
-    }
-    public void postHttpJogador(String nome, String jogador) throws IOException {
-        String entrada = nome;
-        String entradaJogador = jogador;
-
-        if (nome.contains(" ")) {
-            entrada = entrada.replaceAll(" ", "_");
-        }
-        if (jogador.contains(" ")) {
-            entradaJogador = entradaJogador.replaceAll(" ", "_");
-        }
-
-        HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost(server.caminhoPHP+"entrarSala.php?nome=" + entradaJogador+"&sala="+entrada);
-
-        final HttpResponse resposta = httpClient.execute(httpPost);
-        //mensagem = EntityUtils.toString(resposta.getEntity());
-
-        runOnUiThread(new Runnable() {
-            public void run() {
-                try {
-                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_LONG).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 
 }

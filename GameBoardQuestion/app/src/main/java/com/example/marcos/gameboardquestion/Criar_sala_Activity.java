@@ -63,6 +63,10 @@ public class Criar_sala_Activity extends AppCompatActivity {
 
     public void mostrarAguardandoConexao() {
         Intent intent = new Intent(this, AguardandoConexaoActivity.class);
+        EditText edtTxtNomeSala = (EditText)findViewById(R.id.editText_nome_sala);
+        EditText edtTxtNomeJogador = (EditText)findViewById(R.id.editText_nome_jogador);
+        intent.putExtra("nomeJogador",edtTxtNomeJogador.getText().toString());
+        intent.putExtra("nomeSala",edtTxtNomeSala.getText().toString());
         startActivity(intent);
 
     }
