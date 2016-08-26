@@ -68,6 +68,7 @@ public class Criar_sala_Activity extends AppCompatActivity {
         intent.putExtra("nomeJogador",edtTxtNomeJogador.getText().toString());
         intent.putExtra("nomeSala",edtTxtNomeSala.getText().toString());
         startActivity(intent);
+        finish();
 
     }
 

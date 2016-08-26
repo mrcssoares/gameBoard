@@ -29,7 +29,7 @@ public class  Entrar_em_sala_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrar_em_sala_);
-        salas = new String[]{"sala 1", "sala 2", "sala 3"};
+        salas = new String[]{"Carregando..."};
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, salas);
         final ListView listView_salas = (ListView)findViewById(R.id.listView_lista_de_salas);
         listView_salas.setAdapter(adapter);
@@ -61,6 +61,7 @@ public class  Entrar_em_sala_Activity extends AppCompatActivity {
         Intent intent = new Intent(this, Entrar_Em_Sala2Activity.class);
         intent.putExtra("nomeSala", nomesala);
         startActivity(intent);
+        finish();
     }
 
     public void ListaSala(){

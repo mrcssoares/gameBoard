@@ -46,6 +46,7 @@ public class Entrar_Em_Sala2Activity extends AppCompatActivity {
         intent.putExtra("nomeJogador", nomeJogador);
         intent.putExtra("nomeSala", nomeSala);
         startActivity(intent);
+        finish();
     }
     public void RegistraJogadorSala(){
         new Thread(){
@@ -72,7 +73,7 @@ public class Entrar_Em_Sala2Activity extends AppCompatActivity {
         }
 
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost(server.caminhoPHP+"entrarSala.php?nome=" + entradaJogador+"&sala="+entrada);
+        HttpPost httpPost = new HttpPost(server.caminhoPHP+"entrarSala2.php?nome=" + entradaJogador+"&sala="+entrada);
 
         final HttpResponse resposta = httpClient.execute(httpPost);
         //mensagem = EntityUtils.toString(resposta.getEntity());
