@@ -66,7 +66,7 @@ public class AguardandoConexaoActivity extends AppCompatActivity {
             entrada = entrada.replaceAll(" ", "_");
         }
         HttpClient httpClient = new DefaultHttpClient();
-        HttpPost httpPost = new HttpPost(server.caminhoPHP+"startGame.php?sala="+nomeSala);
+        HttpPost httpPost = new HttpPost(server.caminhoPHP+"startGame.php?sala="+entrada);
         final HttpResponse resposta = httpClient.execute(httpPost);
 
         runOnUiThread(new Runnable() {

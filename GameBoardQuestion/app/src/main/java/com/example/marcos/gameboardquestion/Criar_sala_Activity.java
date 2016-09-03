@@ -87,6 +87,9 @@ public class Criar_sala_Activity extends AppCompatActivity {
         EditText edtTxtNomeJogador = (EditText)findViewById(R.id.editText_nome_jogador);
         intent.putExtra("nomeJogador",edtTxtNomeJogador.getText().toString());
         intent.putExtra("nomeSala",edtTxtNomeSala.getText().toString());
+        intent.putExtra("player", "1");
+        intent.putExtra("Fase", "1");
+
         startActivity(intent);
         finish();
 
