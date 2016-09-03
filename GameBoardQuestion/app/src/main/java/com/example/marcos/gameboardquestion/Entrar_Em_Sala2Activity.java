@@ -29,16 +29,28 @@ public class Entrar_Em_Sala2Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         nomeSala = intent.getStringExtra("nomeSala");
+        final EditText edtTxtNomeJogador = (EditText)findViewById(R.id.editText_nome_jogador_2);
         final TextView textViewNomeJogador2 = (TextView)findViewById(R.id.textView_nome_jogador_2);
         button_confirmar.setOnClickListener( new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                RegistraJogadorSala();
-                mostraResponderPerguntas(textViewNomeJogador2.getText().toString(), nomeSala);
+                if (edtTxtNomeJogador.getText().length() == 0) {//como o tamanho é zero é nulla aresposta
 
+                    edtTxtNomeJogador.setError("Campo vazio");
+
+                } else if (edtTxtNomeJogador.getText().length() < 4) {
+
+                    edtTxtNomeJogador.setError("Minimo 4 letras");
+
+                } else {
+                    RegistraJogadorSala();
+                    mostraResponderPerguntas(edtTxtNomeJogador.getText().toString(), nomeSala);
+
+                }
             }
         });
+
 
     }
     public void mostraResponderPerguntas(String nomeJogador, String nomeSala){

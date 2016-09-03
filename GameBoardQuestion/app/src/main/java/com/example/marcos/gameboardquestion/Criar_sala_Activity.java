@@ -37,23 +37,43 @@ public class Criar_sala_Activity extends AppCompatActivity {
 
         btnNomeJogador.setOnClickListener( new View.OnClickListener(){
             @Override
-            public void onClick(View v){
-                btnNomeSala.setVisibility(View.VISIBLE);
-                textViewNomeJogador.setVisibility(View.VISIBLE);
-                editTextNomeJogador.setVisibility(View.VISIBLE);
+            public void onClick(View v) {
+                if (editTextNomeSala.getText().length() == 0) {//como o tamanho é zero é nulla aresposta
 
-                textViewNomeSala.setVisibility(View.INVISIBLE);
-                editTextNomeSala.setVisibility(View.INVISIBLE);
-                btnNomeJogador.setVisibility(View.INVISIBLE);
-                RegistrarSala();
+                    editTextNomeSala.setError("Campo vazio");
+
+                } else if (editTextNomeSala.getText().length() < 4) {
+
+                    editTextNomeSala.setError("Minimo 4 letras");
+
+                } else {
+                    btnNomeSala.setVisibility(View.VISIBLE);
+                    textViewNomeJogador.setVisibility(View.VISIBLE);
+                    editTextNomeJogador.setVisibility(View.VISIBLE);
+
+                    textViewNomeSala.setVisibility(View.INVISIBLE);
+                    editTextNomeSala.setVisibility(View.INVISIBLE);
+                    btnNomeJogador.setVisibility(View.INVISIBLE);
+                    RegistrarSala();
+                }
             }
         });
 
         btnNomeSala.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                RegistraJogadorSala();
-                mostrarAguardandoConexao();
+                if (editTextNomeJogador.getText().length() == 0) {//como o tamanho é zero é nulla aresposta
+
+                    editTextNomeJogador.setError("Campo vazio");
+
+                } else if (editTextNomeJogador.getText().length() < 4) {
+
+                    editTextNomeJogador.setError("Minimo 4 letras");
+
+                } else {
+                    RegistraJogadorSala();
+                    mostrarAguardandoConexao();
+                }
             }
 
         });
@@ -67,6 +87,9 @@ public class Criar_sala_Activity extends AppCompatActivity {
         EditText edtTxtNomeJogador = (EditText)findViewById(R.id.editText_nome_jogador);
         intent.putExtra("nomeJogador",edtTxtNomeJogador.getText().toString());
         intent.putExtra("nomeSala",edtTxtNomeSala.getText().toString());
+        intent.putExtra("player", "1");
+        intent.putExtra("Fase", "1");
+
         startActivity(intent);
         finish();
 
