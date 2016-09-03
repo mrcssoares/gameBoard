@@ -23,7 +23,8 @@
         </activity>
         <activity android:name=".AguardandoConexaoActivity" />
         <activity android:name=".ResponderPerguntaActivity" />
-        <activity android:name=".Entrar_Em_Sala2Activity"></activity>
+        <activity android:name=".Entrar_Em_Sala2Activity" />
+        <activity android:name=".TabuleiroActivity"></activity>
     </application>
 
 </manifest>

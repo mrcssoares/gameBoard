@@ -18,6 +18,7 @@ import java.util.TimerTask;
 public class AguardandoConexaoActivity extends AppCompatActivity {
     IPserver server = new IPserver();
     String nomeJogador="", nomeSala="", consulta="";
+    String fase="1", player="1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class AguardandoConexaoActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ResponderPerguntaActivity.class);
         intent.putExtra("nomeJogador", nomeJogador);
         intent.putExtra("nomeSala", nomeSala);
+        intent.putExtra("fase", fase);
+        intent.putExtra("player", player);
         startActivity(intent);
     }
 
