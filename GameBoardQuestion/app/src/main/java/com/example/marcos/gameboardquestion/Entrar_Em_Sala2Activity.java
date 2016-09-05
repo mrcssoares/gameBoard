@@ -3,6 +3,7 @@ package com.example.marcos.gameboardquestion;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import java.io.IOException;
 public class Entrar_Em_Sala2Activity extends AppCompatActivity {
     IPserver server = new IPserver();
     String nomeSala = "";
+    String fase="1", player="1";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,7 @@ public class Entrar_Em_Sala2Activity extends AppCompatActivity {
 
                 } else {
                     RegistraJogadorSala();
-                    mostraResponderPerguntas(edtTxtNomeJogador.getText().toString(), nomeSala);
+                    mostraResponderPerguntas2(edtTxtNomeJogador.getText().toString(), nomeSala);
 
                 }
             }
@@ -53,10 +55,14 @@ public class Entrar_Em_Sala2Activity extends AppCompatActivity {
 
 
     }
-    public void mostraResponderPerguntas(String nomeJogador, String nomeSala){
-        Intent intent = new Intent(this, ResponderPerguntaActivity.class);
+
+    public void mostraResponderPerguntas2(String nomeJogador, String nomeSala){
+        Intent intent = new Intent(this, TabuleiroActivity.class);
+        Log.d("sala2", "chamando tabuleirio");
         intent.putExtra("nomeJogador", nomeJogador);
         intent.putExtra("nomeSala", nomeSala);
+        intent.putExtra("fase", fase);
+        intent.putExtra("player", player);
         startActivity(intent);
         finish();
     }

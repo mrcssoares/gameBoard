@@ -3,6 +3,7 @@ package com.example.marcos.gameboardquestion;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -33,9 +34,12 @@ public class AguardandoConexaoActivity extends AppCompatActivity {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 aguardaConexao(nomeSala);
+                Log.d("false", "false");
                 if(consulta.contains("true")) {
-                    mostraResponderPerguntas(nomeJogador, nomeSala);
+                    Log.d("false", "true");
                     timer.cancel();
+                    mostraResponderPerguntas(nomeJogador, nomeSala);
+
                 }
             }
         }, 1500, 1500);
@@ -49,6 +53,7 @@ public class AguardandoConexaoActivity extends AppCompatActivity {
         intent.putExtra("fase", fase);
         intent.putExtra("player", player);
         startActivity(intent);
+        finish();
     }
 
     public void aguardaConexao(final String nomeSala){
