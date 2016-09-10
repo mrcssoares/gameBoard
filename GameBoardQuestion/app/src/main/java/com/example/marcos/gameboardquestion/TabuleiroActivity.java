@@ -28,10 +28,11 @@ public class TabuleiroActivity extends AppCompatActivity {
         Intent intent = getIntent();
         nomeJogador = intent.getStringExtra("nomeJogador");
         Log.d("nomeJogador", nomeJogador);
+
         nomeSala = intent.getStringExtra("nomeSala");
         fase = intent.getStringExtra("fase");
         player = intent.getStringExtra("player");
-
+        Log.d("player", player);
         final Timer timer = new Timer();
 
         if(player.contains("1")) {

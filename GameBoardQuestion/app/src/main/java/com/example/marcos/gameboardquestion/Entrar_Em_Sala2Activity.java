@@ -21,7 +21,7 @@ import java.io.IOException;
 public class Entrar_Em_Sala2Activity extends AppCompatActivity {
     IPserver server = new IPserver();
     String nomeSala = "";
-    String fase="1", player="1";
+    String fase="1", player="2";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

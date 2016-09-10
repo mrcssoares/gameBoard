@@ -21,23 +21,15 @@
   $sql_id_time = $DBH->query("SELECT ID FROM SALA WHERE Nome = '".$sala."'") or die ("Erro: ".$sql_id_time->erroInfo());
   $id = $sql_id_time->fetch(PDO::FETCH_OBJ);
   $nt = $id->ID;
-  echo $nt."id sala<br>";
 
   $consulta = $DBH->query("SELECT IdSala FROM JOGADOR WHERE Nome = '$nome' AND (IdSala = '$nt')");
   $count = $consulta->rowCount();
 
-  //$consulta2 = $consulta->fetch(PDO::FETCH_OBJ);
-  echo $count;
   // se jogador não existe, ele é cadastrado
   if ($count == 0){
-      $insercao = $DBH->prepare("INSERT INTO JOGADOR (ID, Nome, Fase, IdSala, player) VALUES ($ID, '$nome', '1', '$nt', '1')") or die ("Error: " .$insercao->erroInfo());
+      $insercao = $DBH->prepare("INSERT INTO JOGADOR (ID, Nome,Fase, IdSala, player) VALUES ($ID, '$nome', '1', '$nt', '2')") or die ("Error: " .$insercao->erroInfo());
       $insercao->execute();
-
-
       echo"Jogador: ".$nome." Entrou na Sala: ".$sala;//true
-
   }else
       echo "Jogador ja existe."//false
 ?>
-
-INSERT INTO `JOGADOR` (`ID`, `Nome`, `Fase`, `IdSala`, `player`) VALUES (NULL, 'marcos', '0', '43', '1');
