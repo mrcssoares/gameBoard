@@ -146,7 +146,7 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
             }
         }.start();
     }
-    public void postHttp2(final String fase, final String player) throws IOException {
+    public void postHttp2(String fase, String player) throws IOException {
 
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(server.caminhoPHP+"obterPergunta.php?player="+ player + "&fase="+ fase);
@@ -160,13 +160,9 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                     //Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
                     mensagem = EntityUtils.toString(resposta.getEntity());
                     respostas = mensagem.split(";");
-                    if(mensagem.length() < 2){
-                        postHttp2(fase, player);
-                    }else {
-                        textoPergunta.setText(respostas[0]);
-                        correta = respostas[1];
-                        Log.d("correta", correta);
-                    }
+                    textoPergunta.setText(respostas[0]);
+                    correta = respostas[1];
+                    Log.d("correta", correta);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -189,7 +185,7 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
         }.start();
     }
     public void postHttpRespondeC(String nome, String player) throws IOException {
-        Log.d("Player: ", player);
+
         HttpClient httpClient = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(server.caminhoPHP+"responderPerguntaCorreta.php?nome=" + nome +"&player="+ player);
 
@@ -199,7 +195,6 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             public void run() {
                 try {
-
                     Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     e.printStackTrace();
