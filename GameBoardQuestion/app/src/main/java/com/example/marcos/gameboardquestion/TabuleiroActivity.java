@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -19,11 +20,15 @@ public class TabuleiroActivity extends AppCompatActivity {
     IPserver server = new IPserver();
     String vez ="";
     String nomeJogador="", nomeSala="", fase="", player="";//jogador
-
+    String[] posicoes = new String[100];
+    String respostas="";
+    TextView faseJogador1, faseJogador2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabuleiro);
+        faseJogador1 = (TextView)findViewById(R.id.textView_fase_jogador1);
+        faseJogador2 = (TextView)findViewById(R.id.textView_fase_jogador2);
 
         Intent intent = getIntent();
         nomeJogador = intent.getStringExtra("nomeJogador");
@@ -33,6 +38,7 @@ public class TabuleiroActivity extends AppCompatActivity {
         fase = intent.getStringExtra("fase");
         player = intent.getStringExtra("player");
         Log.d("player", player);
+        verificaPosicoes();
         final Timer timer = new Timer();
 
         if(player.contains("1")) {
@@ -99,6 +105,39 @@ public class TabuleiroActivity extends AppCompatActivity {
                     //Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
                     vez = EntityUtils.toString(resposta.getEntity());
 
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void verificaPosicoes(){
+        Log.d("RespPergunta", "ConsultandoFase");
+        new Thread(){
+            public void run(){
+                try {
+                    postHttpP();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+    public void postHttpP() throws IOException {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(server.caminhoPHP+"verificaposicoes.php");
+
+        final HttpResponse resposta = httpClient.execute(httpPost);
+        //mensagem = EntityUtils.toString(resposta.getEntity());
+        runOnUiThread(new Runnable() {
+            public void run() {
+                try {
+                    //Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
+                    respostas = EntityUtils.toString(resposta.getEntity());
+                    posicoes = respostas.split(";");
+                    faseJogador1.setText("Jogador1: "+posicoes[0]);
+                    faseJogador2.setText("Jogador1: "+posicoes[1]);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
