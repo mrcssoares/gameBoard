@@ -30,6 +30,9 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
     String[] respostas = new String[100]; //paradas
     String correta;
     TextView textoPergunta;
+    String[] posicoes = new String[100];
+    String respostas1="",Jogador1="", Jogador2="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +51,11 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
         textoPergunta = (TextView) findViewById(R.id.textView_texto_pergunta);
 
         //pegaPergunta();//Pega pergunta conforme a fase do jogador
-
+        verificaPosicoes();
         verdadeiro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                verificaPosicoes();
                 if(correta.contains("1")){
                     Log.d("correta", correta);
                     RespondePerguntaCorreta();
@@ -70,6 +73,7 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("correta", correta);
+                verificaPosicoes();
                 if(correta.contains("0")){
                     RespondePerguntaCorreta();
                     mostrarTabuleiro();
@@ -79,7 +83,6 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                 }
                 Log.d(correta, "falso");
             }
-
 
         });
     }
@@ -227,6 +230,45 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
             public void run() {
                 try {
                     Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void verificaPosicoes(){
+        Log.d("RespPergunta", "ConsultandoFase");
+        new Thread(){
+            public void run(){
+                try {
+                    postHttpP();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+    public void postHttpP() throws IOException {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(server.caminhoPHP+"verificaposicoes.php");
+
+        final HttpResponse resposta = httpClient.execute(httpPost);
+        //mensagem = EntityUtils.toString(resposta.getEntity());
+        runOnUiThread(new Runnable() {
+            public void run() {
+                try {
+                    //Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
+                    respostas1 = EntityUtils.toString(resposta.getEntity());
+                    posicoes = respostas1.split(";");
+                    Jogador1 = posicoes[0];
+                    Jogador2 = posicoes[1];
+                    if(Jogador1.contains("5") && Jogador2.contains("5")){
+                        Toast.makeText(getBaseContext(), "Você Perdeu!!", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

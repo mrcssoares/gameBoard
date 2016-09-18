@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -25,8 +26,9 @@ public class TabuleiroActivity extends AppCompatActivity {
     String[] posicoes = new String[100];
     String respostas="";
     TextView faseJogador1, faseJogador2;
-    Button[] button1 = new Button[11];
-    Button[] button2 = new Button[11];
+    String flag="";
+    Button[] button1 = new Button[12];
+    Button[] button2 = new Button[12];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,30 +95,35 @@ public class TabuleiroActivity extends AppCompatActivity {
         verificaPosicoes();
         final Timer timer = new Timer();
 
+
         if(player.contains("1")) {
-            timer.scheduleAtFixedRate(new TimerTask() {
-                public void run() {
-                    verificaVez();
-                    if (vez.contains("1")) {
-                        Log.d("false", "true");
-                        timer.cancel();
-                        mostrarResponderPerguntas();
-
+            Log.d("fase1: ",faseJogador1.getText().toString() );
+                timer.scheduleAtFixedRate(new TimerTask() {
+                    public void run() {
+                        verificaVez();
+                        if(flag.contains("true")){
+                            timer.cancel();
+                        }
+                        if (vez.contains("1")) {
+                            Log.d("false", "true");
+                            timer.cancel();
+                            mostrarResponderPerguntas();
+                        }
                     }
-                }
-            }, 1500, 1500);
+                }, 1500, 1500);
         }else {
-            timer.scheduleAtFixedRate(new TimerTask() {
-                public void run() {
-                    verificaVez();
-                    if (vez.contains("2")) {
-                        Log.d("false", "true");
-                        timer.cancel();
-                        mostrarResponderPerguntas();
+            Log.d("fase2: ",faseJogador1.getText().toString() );
+                timer.scheduleAtFixedRate(new TimerTask() {
+                    public void run() {
+                        verificaVez();
+                        if (vez.contains("2")) {
+                            Log.d("false", "true");
+                            timer.cancel();
+                            mostrarResponderPerguntas();
 
+                        }
                     }
-                }
-            }, 1500, 1500);
+                }, 1500, 1500);
         }
 
     }
@@ -189,7 +196,12 @@ public class TabuleiroActivity extends AppCompatActivity {
                     respostas = EntityUtils.toString(resposta.getEntity());
                     posicoes = respostas.split(";");
                     faseJogador1.setText("Jogador1: "+posicoes[0]);
-                    faseJogador2.setText("Jogador1: "+posicoes[1]);
+                    faseJogador2.setText("Jogador2: "+posicoes[1]);
+                    if(faseJogador1.getText().toString().contains("5") || (faseJogador2.getText().toString().contains("5"))){
+                        Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
+                        flag ="true";
+                        finish();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
