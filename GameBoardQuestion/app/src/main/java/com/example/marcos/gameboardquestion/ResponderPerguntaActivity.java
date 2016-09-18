@@ -33,6 +33,7 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
     TextView textoPergunta;
     String[] posicoes = new String[100];
     String respostas1="",Jogador1="", Jogador2="";
+    String flag ="";
 
 
     @Override
@@ -59,8 +60,13 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                 verificaPosicoes();
                 if(correta.contains("1")){
                     Log.d("correta", correta);
-                    RespondePerguntaCorreta();
-                    mostrarTabuleiro();
+                    if(flag.contains("true")) {
+                        Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
+                        finish();
+                    }else {
+                        RespondePerguntaCorreta();
+                        mostrarTabuleiro();
+                    }
                 }else{
                     Log.d("incorreta", correta);
                     RespondePerguntaIncorreta();
@@ -76,8 +82,13 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                 Log.d("correta", correta);
                 verificaPosicoes();
                 if(correta.contains("0")){
-                    RespondePerguntaCorreta();
-                    mostrarTabuleiro();
+                    if(flag.contains("true")) {
+                    Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
+                    finish();
+                    }else {
+                        RespondePerguntaCorreta();
+                        mostrarTabuleiro();
+                    }
                 }else{
                     RespondePerguntaIncorreta();
                     mostrarTabuleiro();
@@ -198,11 +209,8 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
 
         runOnUiThread(new Runnable() {
             public void run() {
-                try {
-                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    Toast.makeText(getBaseContext(), "Voce Acertou!!", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -229,11 +237,8 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
 
         runOnUiThread(new Runnable() {
             public void run() {
-                try {
-                    Toast.makeText(getBaseContext(), EntityUtils.toString(resposta.getEntity()), Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    Toast.makeText(getBaseContext(), "Voce errou!!", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -264,9 +269,8 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                     posicoes = respostas1.split(";");
                     Jogador1 = posicoes[0];
                     Jogador2 = posicoes[1];
-                    if(Jogador1.contains("5") || Jogador2.contains("5")){
-                        Toast.makeText(getBaseContext(), "Você Perdeu!!", Toast.LENGTH_LONG).show();
-                        finish();
+                    if(Jogador1.contains("4") || Jogador2.contains("4")){
+                        flag="true";
                     }
 
 

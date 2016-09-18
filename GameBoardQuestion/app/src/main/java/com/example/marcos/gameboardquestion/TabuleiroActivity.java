@@ -105,11 +105,12 @@ public class TabuleiroActivity extends AppCompatActivity {
                         if(flag.toString().equals("true")){
                             timer.cancel();
                             finish();
-                        }
-                        if (vez.contains("1")) {
-                            Log.d("false", "true");
-                            timer.cancel();
-                            mostrarResponderPerguntas();
+                        }else {
+                            if (vez.contains("1")) {
+                                Log.d("false", "true");
+                                timer.cancel();
+                                mostrarResponderPerguntas();
+                            }
                         }
                     }
                 }, 1500, 1500);
@@ -122,12 +123,13 @@ public class TabuleiroActivity extends AppCompatActivity {
                         if(flag.toString().equals("true")){
                             timer.cancel();
                             finish();
-                        }
-                        if (vez.contains("2")) {
-                            Log.d("false", "true");
-                            timer.cancel();
-                            mostrarResponderPerguntas();
+                        }else {
+                            if (vez.contains("2")) {
+                                Log.d("false", "true");
+                                timer.cancel();
+                                mostrarResponderPerguntas();
 
+                            }
                         }
                     }
                 }, 1500, 1500);
@@ -211,7 +213,7 @@ public class TabuleiroActivity extends AppCompatActivity {
 
                     if(posicoes[0].toString().equals("5") || posicoes[1].toString().equals("5")){
                         flag = "true";
-                        Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), "Você Perdeu!!", Toast.LENGTH_LONG).show();
 
                     }
                 } catch (IOException e) {
