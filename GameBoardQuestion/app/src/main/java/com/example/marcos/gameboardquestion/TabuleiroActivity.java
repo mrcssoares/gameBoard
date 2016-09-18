@@ -211,11 +211,15 @@ public class TabuleiroActivity extends AppCompatActivity {
                     button1[um].setVisibility(View.VISIBLE);
                     button2[dois].setVisibility(View.VISIBLE);
 
-                    if(posicoes[0].toString().equals("5") || posicoes[1].toString().equals("5")){
+                    if(posicoes[0].toString().equals("5") && player.equals("2")){
                         flag = "true";
                         Toast.makeText(getBaseContext(), "Você Perdeu!!", Toast.LENGTH_LONG).show();
-
                     }
+                    if(posicoes[1].toString().equals("5")&& player.equals("1")){
+                        flag = "true";
+                        Toast.makeText(getBaseContext(), "Você Perdeu!!", Toast.LENGTH_LONG).show();
+                    }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

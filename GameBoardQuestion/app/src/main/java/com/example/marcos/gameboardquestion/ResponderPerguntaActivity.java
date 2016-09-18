@@ -61,6 +61,7 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                 if(correta.contains("1")){
                     Log.d("correta", correta);
                     if(flag.contains("true")) {
+                        RespondePerguntaCorreta();
                         Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
                         finish();
                     }else {
@@ -83,8 +84,9 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                 verificaPosicoes();
                 if(correta.contains("0")){
                     if(flag.contains("true")) {
-                    Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
-                    finish();
+                        RespondePerguntaCorreta();
+                        Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
+                        finish();
                     }else {
                         RespondePerguntaCorreta();
                         mostrarTabuleiro();
@@ -269,7 +271,10 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                     posicoes = respostas1.split(";");
                     Jogador1 = posicoes[0];
                     Jogador2 = posicoes[1];
-                    if(Jogador1.contains("4") || Jogador2.contains("4")){
+                    if(Jogador1.contains("4") && player.equals("1")){
+                        flag="true";
+                    }
+                    if (Jogador2.contains("4")&&player.equals("2")) {
                         flag="true";
                     }
 
