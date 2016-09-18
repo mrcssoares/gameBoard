@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ import java.io.IOException;
 public class ResponderPerguntaActivity extends AppCompatActivity {
     String nomeJogador="", nomeSala="", fase="", player="";//jogador
 
-    Button verdadeiro, falso; //buttons
+    ImageButton verdadeiro, falso; //buttons
     IPserver server = new IPserver(); //servidor
 
     String mensagem = "";//paradas
@@ -46,8 +47,8 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
         player = intent.getStringExtra("player");
         ConsultarFase();//VErifica fase do jogador
 
-        verdadeiro = (Button) findViewById(R.id.button_verdadeiro);
-        falso = (Button) findViewById(R.id.button_falso);
+        verdadeiro = (ImageButton)findViewById(R.id.imageButton_verdadeiro);
+        falso = (ImageButton)findViewById(R.id.imageButton_falso);
         textoPergunta = (TextView) findViewById(R.id.textView_texto_pergunta);
 
         //pegaPergunta();//Pega pergunta conforme a fase do jogador

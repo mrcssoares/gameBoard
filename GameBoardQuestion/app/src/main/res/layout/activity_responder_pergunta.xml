@@ -14,28 +14,6 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Verdadeiro"
-            android:id="@+id/button_verdadeiro"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="left|center_vertical" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Falso"
-            android:id="@+id/button_falso"
-            android:layout_alignBottom="@+id/button_verdadeiro"
-            android:layout_toRightOf="@+id/textView_texto_pergunta"
-            android:layout_alignTop="@+id/button_verdadeiro"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="right|center_vertical" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="166dp"
@@ -46,6 +24,28 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal|top" />
+
+        <ImageButton
+            android:layout_width="82dp"
+            android:layout_height="68dp"
+            android:id="@+id/imageButton_falso"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/xx" />
+
+        <ImageButton
+            android:layout_width="92dp"
+            android:layout_height="75dp"
+            android:id="@+id/imageButton_verdadeiro"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/vde" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|center_vertical">
+
+        </FrameLayout>
+
     </FrameLayout>
 
 </RelativeLayout>
