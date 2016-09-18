@@ -101,8 +101,10 @@ public class TabuleiroActivity extends AppCompatActivity {
                 timer.scheduleAtFixedRate(new TimerTask() {
                     public void run() {
                         verificaVez();
-                        if(flag.contains("true")){
+                        verificaPosicoes();
+                        if(flag.toString().equals("true")){
                             timer.cancel();
+                            finish();
                         }
                         if (vez.contains("1")) {
                             Log.d("false", "true");
@@ -116,6 +118,11 @@ public class TabuleiroActivity extends AppCompatActivity {
                 timer.scheduleAtFixedRate(new TimerTask() {
                     public void run() {
                         verificaVez();
+                        verificaPosicoes();
+                        if(flag.toString().equals("true")){
+                            timer.cancel();
+                            finish();
+                        }
                         if (vez.contains("2")) {
                             Log.d("false", "true");
                             timer.cancel();
@@ -197,10 +204,15 @@ public class TabuleiroActivity extends AppCompatActivity {
                     posicoes = respostas.split(";");
                     faseJogador1.setText("Jogador1: "+posicoes[0]);
                     faseJogador2.setText("Jogador2: "+posicoes[1]);
-                    if(faseJogador1.getText().toString().contains("5") || (faseJogador2.getText().toString().contains("5"))){
+                    int um = Integer.parseInt(posicoes[0].toString());
+                    int dois = Integer.parseInt(posicoes[1].toString());
+                    button1[um].setVisibility(View.VISIBLE);
+                    button2[dois].setVisibility(View.VISIBLE);
+
+                    if(posicoes[0].toString().equals("5") || posicoes[1].toString().equals("5")){
+                        flag = "true";
                         Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
-                        flag ="true";
-                        finish();
+
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

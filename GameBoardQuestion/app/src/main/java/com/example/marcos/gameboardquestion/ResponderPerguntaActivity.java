@@ -264,7 +264,7 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                     posicoes = respostas1.split(";");
                     Jogador1 = posicoes[0];
                     Jogador2 = posicoes[1];
-                    if(Jogador1.contains("5") && Jogador2.contains("5")){
+                    if(Jogador1.contains("5") || Jogador2.contains("5")){
                         Toast.makeText(getBaseContext(), "Você Perdeu!!", Toast.LENGTH_LONG).show();
                         finish();
                     }
