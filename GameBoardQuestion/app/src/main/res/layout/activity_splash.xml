@@ -15,10 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:background="#fffdfd"
+        android:background="@drawable/outra2"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentEnd="true"
+        android:id="@+id/frameLayout">
 
         <ImageView
             android:layout_width="449dp"
@@ -27,4 +28,5 @@
             android:layout_gravity="center"
             android:src="@drawable/splash" />
     </FrameLayout>
+
 </RelativeLayout>

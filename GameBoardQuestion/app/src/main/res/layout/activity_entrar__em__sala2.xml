@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.marcos.gameboardquestion.Entrar_Em_Sala2Activity">
+    tools:context="com.example.marcos.gameboardquestion.Entrar_Em_Sala2Activity"
+    android:background="@drawable/capa">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +19,9 @@
         android:layout_gravity="center_horizontal|top"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp" />
+        android:layout_marginTop="46dp"
+        android:typeface="serif"
+        android:background="#43f189" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -28,7 +31,8 @@
         android:layout_below="@+id/textView_nome_jogador_2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="58dp" />
+        android:layout_marginTop="58dp"
+        android:textColor="@color/abc_search_url_text_selected" />
 
     <Button
         android:layout_width="wrap_content"
@@ -36,6 +40,8 @@
         android:text="Confirmar"
         android:id="@+id/button_jogador_2"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#47b480"
+        android:typeface="serif" />
 
 </RelativeLayout>
