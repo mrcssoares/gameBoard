@@ -16,10 +16,11 @@ $DBH->query('SET character_set_results=utf8');
 $sql = "UPDATE JOGADOR SET Fase = (Fase + 1) WHERE JOGADOR.Nome = '$nome'";
 $jogador = $DBH->query($sql);
 if($player == "1"){
+	echo "$player";
 	$sql2 = "UPDATE GAME SET Jogador1 = (Jogador1 + 1), Vez = 2 WHERE GAME.ID = 1";
 	$jogador2 = $DBH->query($sql2);
 }else{
-
+	echo "$player";
 	$sql2 = "UPDATE GAME SET Jogador2 = (Jogador2 + 1), Vez = 1 WHERE GAME.ID = 1";
 	$jogador2 = $DBH->query($sql2);
 }
