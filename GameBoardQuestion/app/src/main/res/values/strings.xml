@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GameBoardQuestion</string>
+    <string name="game_board_question">Game Board Question</string>
 </resources>

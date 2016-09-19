@@ -3,6 +3,7 @@ package com.example.marcos.gameboardquestion;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,6 +48,7 @@ public class Criar_sala_Activity extends AppCompatActivity {
                     editTextNomeSala.setError("Minimo 4 letras");
 
                 } else {
+                    fimdeJogo();
                     btnNomeSala.setVisibility(View.VISIBLE);
                     textViewNomeJogador.setVisibility(View.VISIBLE);
                     editTextNomeJogador.setVisibility(View.VISIBLE);
@@ -166,6 +168,30 @@ public class Criar_sala_Activity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+    }
+    public void fimdeJogo(){
+        Log.d("RespPergunta", "ConsultandoFase");
+        new Thread(){
+            public void run(){
+                try {
+                    postHttpfim();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+    public void postHttpfim() throws IOException {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(server.caminhoPHP+"fimdejogo.php");
+
+        final HttpResponse resposta = httpClient.execute(httpPost);
+        //mensagem = EntityUtils.toString(resposta.getEntity());
+        runOnUiThread(new Runnable() {
+            public void run() {
+
             }
         });
     }

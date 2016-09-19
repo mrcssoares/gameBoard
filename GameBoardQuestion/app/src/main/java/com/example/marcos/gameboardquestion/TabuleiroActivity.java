@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +27,8 @@ public class TabuleiroActivity extends AppCompatActivity {
     String respostas="";
     TextView faseJogador1, faseJogador2;
     String flag="";
-    ImageButton[] button1 = new ImageButton[12];
-    ImageButton[] button2 = new ImageButton[12];
+    Button[] button1 = new Button[12];
+    Button[] button2 = new Button[12];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,30 +36,30 @@ public class TabuleiroActivity extends AppCompatActivity {
         faseJogador1 = (TextView)findViewById(R.id.textView_fase_jogador1);
         faseJogador2 = (TextView)findViewById(R.id.textView_fase_jogador2);
         
-        button1[0] = (ImageButton) findViewById(R.id.imageButton_1_0);
-        button2[0] = (ImageButton) findViewById(R.id.imageButton_2_0);
-        button1[1] = (ImageButton) findViewById(R.id.imageButton_1_1);
-        button2[1] = (ImageButton) findViewById(R.id.imageButton_2_1);
-        button1[2] = (ImageButton) findViewById(R.id.imageButton_1_2);
-        button2[2] = (ImageButton) findViewById(R.id.imageButton_2_2);
-        button1[3] = (ImageButton) findViewById(R.id.imageButton_1_3);
-        button2[3] = (ImageButton) findViewById(R.id.imageButton_2_3);
-        button1[4] = (ImageButton) findViewById(R.id.imageButton_1_4);
-        button2[4] = (ImageButton) findViewById(R.id.imageButton_2_4);
-        button1[5] = (ImageButton) findViewById(R.id.imageButton_1_5);
-        button2[5] = (ImageButton) findViewById(R.id.imageButton_2_5);
-        button1[6] = (ImageButton) findViewById(R.id.imageButton_1_6);
-        button2[6] = (ImageButton) findViewById(R.id.imageButton_2_6);
-        button1[7] = (ImageButton) findViewById(R.id.imageButton_1_7);
-        button2[7] = (ImageButton) findViewById(R.id.imageButton_2_7);
-        button1[8] = (ImageButton) findViewById(R.id.imageButton_1_8);
-        button2[8] = (ImageButton) findViewById(R.id.imageButton_2_8);
-        button1[9] = (ImageButton) findViewById(R.id.imageButton_1_9);
-        button2[9] = (ImageButton) findViewById(R.id.imageButton_2_9);
-        button1[10] = (ImageButton) findViewById(R.id.imageButton_1_10);
-        button2[10] = (ImageButton) findViewById(R.id.imageButton_2_10);
-        button1[11] = (ImageButton) findViewById(R.id.imageButton_1_11);
-        button2[11] = (ImageButton) findViewById(R.id.imageButton_2_11);
+        button1[0] = (Button) findViewById(R.id.button_1_0);
+        button2[0] = (Button) findViewById(R.id.button_2_0);
+        button1[1] = (Button) findViewById(R.id.button_1_1);
+        button2[1] = (Button) findViewById(R.id.button_2_1);
+        button1[2] = (Button) findViewById(R.id.button_1_2);
+        button2[2] = (Button) findViewById(R.id.button_2_2);
+        button1[3] = (Button) findViewById(R.id.button_1_3);
+        button2[3] = (Button) findViewById(R.id.button_2_3);
+        button1[4] = (Button) findViewById(R.id.button_1_4);
+        button2[4] = (Button) findViewById(R.id.button_2_4);
+        button1[5] = (Button) findViewById(R.id.button_1_5);
+        button2[5] = (Button) findViewById(R.id.button_2_5);
+        button1[6] = (Button) findViewById(R.id.button_1_6);
+        button2[6] = (Button) findViewById(R.id.button_2_6);
+        button1[7] = (Button) findViewById(R.id.button_1_7);
+        button2[7] = (Button) findViewById(R.id.button_2_7);
+        button1[8] = (Button) findViewById(R.id.button_1_8);
+        button2[8] = (Button) findViewById(R.id.button_2_8);
+        button1[9] = (Button) findViewById(R.id.button_1_9);
+        button2[9] = (Button) findViewById(R.id.button_2_9);
+        button1[10] = (Button) findViewById(R.id.button_1_10);
+        button2[10] = (Button) findViewById(R.id.button_2_10);
+        button1[11] = (Button) findViewById(R.id.button_1_11);
+        button2[11] = (Button) findViewById(R.id.button_2_11);
         button1[0].setVisibility(View.INVISIBLE);
         button2[0].setVisibility(View.INVISIBLE);
         button1[1].setVisibility(View.INVISIBLE);
@@ -84,6 +84,7 @@ public class TabuleiroActivity extends AppCompatActivity {
         button2[10].setVisibility(View.INVISIBLE);
         button1[11].setVisibility(View.INVISIBLE);
         button2[11].setVisibility(View.INVISIBLE);
+        
         Intent intent = getIntent();
         nomeJogador = intent.getStringExtra("nomeJogador");
         Log.d("nomeJogador", nomeJogador);
@@ -97,7 +98,7 @@ public class TabuleiroActivity extends AppCompatActivity {
 
 
         if(player.contains("1")) {
-            Log.d("fase1: ",faseJogador1.getText().toString() );
+        //    Log.d("fase1: ",faseJogador1.getText().toString() );
                 timer.scheduleAtFixedRate(new TimerTask() {
                     public void run() {
                         verificaVez();
@@ -115,7 +116,7 @@ public class TabuleiroActivity extends AppCompatActivity {
                     }
                 }, 1500, 1500);
         }else {
-            Log.d("fase2: ",faseJogador1.getText().toString() );
+        //    Log.d("fase2: ",faseJogador1.getText().toString() );
                 timer.scheduleAtFixedRate(new TimerTask() {
                     public void run() {
                         verificaVez();
