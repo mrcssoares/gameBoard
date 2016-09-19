@@ -17,12 +17,11 @@
         android:id="@+id/textView_titulo_jogo"
         android:editable="false"
         android:textColor="@android:color/holo_red_dark"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
-        android:layout_alignParentEnd="false"
+        android:layout_marginTop="32dp"
         android:longClickable="false"
-        android:typeface="serif" />
+        android:typeface="serif"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -33,7 +32,7 @@
         android:layout_below="@+id/textView_titulo_jogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="147dp"
-        android:backgroundTint="#47b480" />
+        android:backgroundTint="@android:color/holo_orange_dark" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -43,8 +42,8 @@
         android:id="@+id/button_entrar_em_sala"
         android:layout_below="@+id/button_criar_sala"
         android:layout_centerHorizontal="true"
-        android:textColor="@android:color/background_dark"
-        android:backgroundTint="#47b480" />
+        android:textColor="@android:color/black"
+        android:background="@android:color/holo_orange_dark" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -55,7 +54,7 @@
         android:layout_marginTop="72dp"
         android:layout_below="@+id/button_entrar_em_sala"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="#47b480" />
+        android:backgroundTint="@android:color/holo_orange_light" />
 
     <ImageView
         android:layout_width="80dp"

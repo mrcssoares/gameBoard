@@ -14,11 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Entar em Sala"
+        android:text="Entrar em Sala"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="#43f189" />
+        android:background="@android:color/holo_orange_dark" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="58dp"
         android:choiceMode="singleChoice"
-        android:background="#2fdb77" />
+        android:background="@android:color/holo_orange_dark" />
 
     <ScrollView
         android:layout_width="wrap_content"
