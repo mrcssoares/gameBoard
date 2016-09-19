@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="166dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
+            android:text="Carregando..."
             android:id="@+id/textView_texto_pergunta"
             android:layout_marginTop="67dp"
             android:layout_alignParentTop="true"

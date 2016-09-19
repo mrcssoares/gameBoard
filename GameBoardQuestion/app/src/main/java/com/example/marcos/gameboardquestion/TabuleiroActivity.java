@@ -211,12 +211,24 @@ public class TabuleiroActivity extends AppCompatActivity {
                     int dois = Integer.parseInt(posicoes[1].toString());
                     button1[um].setVisibility(View.VISIBLE);
                     button2[dois].setVisibility(View.VISIBLE);
+                    if(um > 0 && dois > 0) {
+                        button1[um - 1].setVisibility(View.INVISIBLE);
+                        button2[dois - 1].setVisibility(View.INVISIBLE);
+                    }
 
-                    if(posicoes[0].toString().equals("5") && player.equals("2")){
+                    if(posicoes[0].toString().equals("11") && player.equals("2")){
                         flag = "true";
                         Toast.makeText(getBaseContext(), "Você Perdeu!!", Toast.LENGTH_LONG).show();
                     }
-                    if(posicoes[1].toString().equals("5")&& player.equals("1")){
+                    if(posicoes[1].toString().equals("11") && player.equals("2")){
+                        flag = "true";
+                        Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
+                    }
+                    if(posicoes[0].toString().equals("11") && player.equals("1")){
+                        flag = "true";
+                        Toast.makeText(getBaseContext(), "Você Venceu!!", Toast.LENGTH_LONG).show();
+                    }
+                    if(posicoes[1].toString().equals("11")&& player.equals("1")){
                         flag = "true";
                         Toast.makeText(getBaseContext(), "Você Perdeu!!", Toast.LENGTH_LONG).show();
                     }

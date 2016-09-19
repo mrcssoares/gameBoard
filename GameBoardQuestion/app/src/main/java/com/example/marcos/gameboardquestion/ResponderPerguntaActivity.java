@@ -51,7 +51,8 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
         verdadeiro = (ImageButton)findViewById(R.id.imageButton_verdadeiro);
         falso = (ImageButton)findViewById(R.id.imageButton_falso);
         textoPergunta = (TextView) findViewById(R.id.textView_texto_pergunta);
-
+        verdadeiro.setEnabled(false);
+        falso.setEnabled(false);
         //pegaPergunta();//Pega pergunta conforme a fase do jogador
         verificaPosicoes();
         verdadeiro.setOnClickListener(new View.OnClickListener() {
@@ -179,6 +180,8 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                     respostas = mensagem.split(";");
                     textoPergunta.setText(respostas[0]);
                     correta = respostas[1];
+                    verdadeiro.setEnabled(true);
+                    falso.setEnabled(true);
                     Log.d("correta", correta);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -271,12 +274,12 @@ public class ResponderPerguntaActivity extends AppCompatActivity {
                     posicoes = respostas1.split(";");
                     Jogador1 = posicoes[0];
                     Jogador2 = posicoes[1];
-                    if(Jogador1.contains("4") && player.equals("1")){
+                    /*if(Jogador1.contains("10") && player.equals("1")){
                         flag="true";
                     }
-                    if (Jogador2.contains("4")&&player.equals("2")) {
+                    if (Jogador2.contains("10")&&player.equals("2")) {
                         flag="true";
-                    }
+                    }*/
 
 
                 } catch (IOException e) {
