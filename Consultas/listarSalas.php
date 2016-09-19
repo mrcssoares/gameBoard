@@ -1,4 +1,5 @@
 <?php
+  header('Content-Type: text/html; charset=utf-8');
 	try{
       	#Conexão com MySQL via PDO_MYSQL
       	$DBH = new PDO("mysql:host=localhost;dbname=gameBoard", "root", "root");
