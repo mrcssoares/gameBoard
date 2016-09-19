@@ -6,6 +6,7 @@ package com.example.marcos.gameboardquestion;
 public class IPserver {
     public String caminhoPHP;
     public IPserver(){
-        this.caminhoPHP = "http://192.168.43.191/BoardQuestion/Consultas/";
+        this.caminhoPHP = "http://ec2-52-67-126-53.sa-east-1.compute.amazonaws.com/gameBoard/Consultas/";
+        //this.caminhoPHP = "http://192.168.43.191/BoardQuestion/Consultas/";
     }
 }

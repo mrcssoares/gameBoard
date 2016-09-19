@@ -21,7 +21,7 @@
   $sql_id_time = $DBH->query("SELECT ID FROM SALA WHERE Nome = '".$sala."'") or die ("Erro: ".$sql_id_time->erroInfo());
   $id = $sql_id_time->fetch(PDO::FETCH_OBJ);
   $nt = $id->ID;
-  echo $nt."id sala<br>";
+  //echo $nt."id sala<br>";
 
   $consulta = $DBH->query("SELECT IdSala FROM JOGADOR WHERE Nome = '$nome' AND (IdSala = '$nt')");
   $count = $consulta->rowCount();
@@ -39,5 +39,3 @@
   }else
       echo "Jogador ja existe."//false
 ?>
-
-INSERT INTO `JOGADOR` (`ID`, `Nome`, `Fase`, `IdSala`, `player`) VALUES (NULL, 'marcos', '0', '43', '1');
