@@ -19,8 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:typeface="serif"
-        android:background="@color/abc_background_cache_hint_selector_material_light"
-        android:textColor="@android:color/holo_orange_dark" />
+        android:background="#43f189" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,7 +66,7 @@
         android:layout_below="@+id/editText_nome_sala"
         android:layout_alignRight="@+id/textView_criar_sala"
         android:layout_alignEnd="@+id/textView_criar_sala"
-        android:backgroundTint="@android:color/holo_orange_dark" />
+        android:backgroundTint="#47b480" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -78,6 +77,6 @@
         android:layout_below="@+id/button_cadastrar_sala"
         android:layout_alignRight="@+id/button_cadastrar_sala"
         android:layout_alignEnd="@+id/button_cadastrar_sala"
-        android:backgroundTint="@android:color/holo_orange_dark" />
+        android:backgroundTint="#47b480" />
 
 </RelativeLayout>

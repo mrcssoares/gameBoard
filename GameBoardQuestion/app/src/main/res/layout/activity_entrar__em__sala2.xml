@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
         android:typeface="serif"
-        android:background="@android:color/holo_orange_dark" />
+        android:background="#43f189" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -41,7 +41,7 @@
         android:id="@+id/button_jogador_2"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:backgroundTint="@android:color/holo_orange_dark"
+        android:backgroundTint="#47b480"
         android:typeface="serif" />
 
 </RelativeLayout>
